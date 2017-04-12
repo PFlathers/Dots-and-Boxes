@@ -1,8 +1,10 @@
 package com.epindustries.hackdayapp;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
 
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +12,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
@@ -441,6 +444,15 @@ public class PixelGridView extends View {
                 TextView t = (TextView) this.getRootView().findViewById(R.id.textView2);
                 t.setText(temp + "\n Red Score:" + redboxes + "\t Blue Score:" + blueboxes);
 
+                if (redboxes > (Math.ceil(numColumns * numRows) / 2)) {
+                    winCondition(0);
+                }
+                else if (blueboxes > (Math.ceil(numColumns * numRows) / 2)){
+                    winCondition(1);
+                }
+
+
+
                 swap = false;
                 drawing = false;
                 result = true;
@@ -450,6 +462,31 @@ public class PixelGridView extends View {
             invalidate();
         return result;
 
+    }
+
+        private void winCondition(int uid){
+        Context context = getContext();
+        new AlertDialog.Builder(context)
+                .setTitle("User:" +uid + " Wins!")
+                .setMessage("What now?")
+                .setPositiveButton("New Game?", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        System.exit(0);
+                       // ((FrameLayout)getParent()).
+
+
+                    }
+                })
+                .setNegativeButton("Return to menu", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                        System.exit(0);
+                      //  ( (MainActivity)((GameFragment)(getParent())).getActivity()).onBackPressed();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
 
