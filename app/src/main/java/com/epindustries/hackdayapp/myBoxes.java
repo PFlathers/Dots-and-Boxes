@@ -1,7 +1,7 @@
 package com.epindustries.hackdayapp;
 
 /**
- * Created by flayers on 4/8/17.
+ * Created by Patrick Flathers on 4/8/17.
  */
 
 public class myBoxes {
@@ -53,13 +53,11 @@ public class myBoxes {
         this.l3 = l3;
         this.l4 = l4;
         counter = 0;
-
-
     }
+
 
     public void setId(int id){
         this.id = id;
-
     }
 
 

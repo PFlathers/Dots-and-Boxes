@@ -1,7 +1,7 @@
 package com.epindustries.hackdayapp;
 
 /**
- * Created by flayers on 4/8/17.
+ * Created by Patrick Flathers on 4/8/17.
  */
 
 public class myPoint {

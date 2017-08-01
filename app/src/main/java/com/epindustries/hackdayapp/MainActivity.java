@@ -1,18 +1,15 @@
 package com.epindustries.hackdayapp;
 
 import android.app.Fragment;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+/**
+ * Created by Patrick Flathers on 4/8/17.
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private android.app.FragmentManager fragMan;
     private android.app.FragmentTransaction fragmentTransaction;
-    private boolean start = true;
+
     private int currFrag = 0;
 
     @Override
@@ -31,40 +28,21 @@ public class MainActivity extends AppCompatActivity {
         pix.setNumColumns(4);
         pix.setNumRows(6);
         pix.createPoints();
-       // setContentView(pix);
-
-
        setContentView(R.layout.activity_main);
         setFrags();
-
-
-
     }
+
 
     protected void onResume(){
         super.onResume();
-
-
-
-        View decorView = getWindow().getDecorView();
-
-       // int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
-//        decorView.setSystemUiVisibility(uiOptions);
-
-
-        return;
-
-
-
     }
+
 
     private void setFrags(){
         fragMan = getFragmentManager();
-        if (start){
-            setHomeFrag();
-        }
-
+        setHomeFrag();
     }
+
 
     private void setHomeFrag() {
         fragmentTransaction = fragMan.beginTransaction();
@@ -72,25 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.replace(R.id.placeholder, main, "MAIN");
         fragmentTransaction.commit();
-
-
     }
 
 
     public void startgame(View view){
-
         fragmentTransaction = fragMan.beginTransaction();
         Fragment main = new GameFragment();
-
         fragmentTransaction.replace(R.id.placeholder, main, "GAME");
         fragmentTransaction.commit();
         currFrag = 1;
-
-    }
-
-    protected void onWindowFocusChanged() {
-
-
     }
 
     @Override
@@ -99,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -111,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed(){
@@ -128,15 +97,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             super.finish();
-
-
         }
-
-
     }
-
-
-
 }
 
 
